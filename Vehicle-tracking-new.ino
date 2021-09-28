@@ -1,102 +1,100 @@
-#include <TinyGPS++.h>
 #include <SoftwareSerial.h>
-
-static const int RXPin = 4, TXPin = 3;
-static const uint32_t GPSBaud = 9600;
-// The TinyGPS++ object
+#include <TinyGPS++.h>
 TinyGPSPlus gps;
-int temp = 0, i;
-// The serial connection to the GPS device
-SoftwareSerial ss(RXPin, TXPin);
-String stringVal = "";
-
+SoftwareSerial sim(3, 2);
+SoftwareSerial ss(4, 5);
+int _timeout;
+String _buffer;
+String number = "+ZZXXXXXXXXXX"; //-> change with your number
+float longitude;
+float latitude;
+String rSMS;
+int index = 0;
 void setup()
 {
+  delay(5000); //delay for 7 seconds to make sure the modules get the signal
   Serial.begin(9600);
-  ss.begin(GPSBaud);
-  Serial.println("Vehicle Tracking");
-  Serial.println("    System      ");
-  delay(2000);
-  gsm_init();
-  Serial.println("AT+CNMI=2,2,0,0,0");
-  Serial.println("GPS Initializing");
-  Serial.println("  No GPS Range  ");
-  delay(2000);
-  Serial.println("GPS Range Found");
-  Serial.println("GPS is Ready");
-  delay(2000);
-  Serial.println("System Ready");
-  temp = 0;
+  _buffer.reserve(50);
+  Serial.println(" GSM System Started...");
+  ss.begin(9600);
+  sim.begin(115200);
+  delay(1000);
+  RecieveMessage();
 }
-
 void loop()
 {
-  serialEvent();
 
-  while (temp)
+  if (sim.available() > 0)
   {
-    while (ss.available() > 0)
+    //    Serial.write(sim.read());
+    rSMS = sim.readString();
+    Serial.println(rSMS);
+    if (rSMS.indexOf("#Locate") != -1)
     {
-      gps.encode(ss.read());
-      if (gps.location.isUpdated())
-      {
-        temp = 0;
-        tracking();
-      }
-      if (!temp)
-        break;
-    }
-  }
-  digitalWrite(13, LOW);
-}
-void serialEvent()
-{
-  while (Serial.available() > 0)
-  {
-    if (Serial.find("Track Vehicle"))
-    {
-      temp = 1;
-      break;
-    }
-    else
-    {
-      temp = 0;
+      gpsLocation();
+      SendMessage();
+      RecieveMessage();
     }
   }
 }
 
-void send_data(String message)
+void RecieveMessage()
 {
-  Serial.print(message);
-  delay(200);
+
+  Serial.println("GSM Read an SMS\n");
+  delay(1000);
+  sim.println("AT+CNMI=2,2,0,0,0"); // AT Command to receive a live SMS
+  delay(1000);
+  Serial.write("Unread Message done\n");
 }
 
-void lcd_status()
+void gpsLocation()
 {
-  Serial.println("Message Sent");
-  delay(2000);
-  Serial.println("System Ready");
-  return;
+  ss.begin(9600);
+  ss.listen();
+  while (ss.available() > 0)
+  {
+    gps.encode(ss.read());
+    if (gps.location.isUpdated())
+    {
+      Serial.print("Latitude= ");
+      Serial.print(gps.location.lat(), 6);
+      latitude = gps.location.lat();
+      Serial.print(" Longitude= ");
+      Serial.println(gps.location.lng(), 6);
+      longitude = gps.location.lng();
+    }
+  }
 }
 
-void tracking()
+void SendMessage()
 {
-  init_sms();
-  send_data("Vehicle Tracking Alert:");
-  Serial.println(" ");
-  send_data("Your Vehicle Current Location is:");
-  Serial.println(" ");
-  Serial.print("Latitude: ");
-  Serial.print(gps.location.lat(), 6);
-  Serial.print("\n Longitude: ");
-  Serial.println(gps.location.lng(), 6);
 
-  // https://www.google.com/maps/@8.2630696,77.3022699,14z
-  Serial.print("https://www.google.com/maps/@");
-  Serial.print(gps.location.lat(), 6);
-  Serial.print(',');
-  Serial.print(gps.location.lng(), 6);
-  Serial.print(",14z");
-  send_sms();
-  delay(2000);
+  sim.listen();
+  //Serial.println ("Sending Message");
+  sim.println("AT+CMGF=1"); //Sets the GSM Module in Text Mode
+  delay(1000);
+  //Serial.println ("Set SMS Number");
+  sim.println("AT+CMGS=\"" + number + "\"\r"); //Mobile phone number to send message
+  delay(1000);
+  String SMS = "Hi, current location of bike is on Latitude = " + String(latitude, 6) + " and Longitude = " + String(longitude, 6);
+  sim.println(SMS);
+  delay(100);
+  sim.println((char)26); // ASCII code of CTRL+Z
+  delay(1000);
+  _buffer = _readSerial();
+}
+
+String _readSerial()
+{
+  _timeout = 0;
+  while (!sim.available() && _timeout < 12000)
+  {
+    delay(13);
+    _timeout++;
+  }
+  if (sim.available())
+  {
+    return sim.readString();
+  }
 }

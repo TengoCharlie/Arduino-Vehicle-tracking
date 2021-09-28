@@ -1,4 +1,24 @@
-# 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
+#include <Arduino.h>
+#line 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
+#line 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
+void init_sms();
+#line 9 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
+void send_sms();
+#line 14 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
+void gsm_init();
+#line 13 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void setup();
+#line 24 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void loop();
+#line 41 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void RecieveMessage();
+#line 51 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void gpsLocation();
+#line 70 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void SendMessage();
+#line 88 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+String _readSerial();
+#line 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
 void init_sms()
 {
     Serial.println("AT+CMGF=1");
@@ -60,9 +80,10 @@ void gsm_init()
 
     delay(1000);
 }
-# 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
-# 2 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino" 2
-# 3 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino" 2
+
+#line 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+#include <SoftwareSerial.h>
+#include <TinyGPS++.h>
 TinyGPSPlus gps;
 SoftwareSerial sim(3, 2);
 SoftwareSerial ss(4, 5);
@@ -161,3 +182,4 @@ String _readSerial()
     return sim.readString();
   }
 }
+

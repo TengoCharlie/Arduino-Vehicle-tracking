@@ -1,4 +1,4 @@
-c:\Users\thegr\OneDrive\Desktop\Vehicle-tracking-new\build\libraries\TinyGPSPlus-1.0.2b\TinyGPS++.cpp.o: \
+c:\Users\thegr\OneDrive\Desktop\del1\Arduino-Vehicle-tracking\build\libraries\TinyGPSPlus-1.0.2b\TinyGPS++.cpp.o: \
  C:\Users\thegr\OneDrive\Documents\Arduino\libraries\TinyGPSPlus-1.0.2b\src\TinyGPS++.cpp \
  C:\Users\thegr\OneDrive\Documents\Arduino\libraries\TinyGPSPlus-1.0.2b\src\TinyGPS++.h \
  C:\Users\thegr\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.3\cores\arduino/Arduino.h \

@@ -1,4 +1,4 @@
-c:\Users\thegr\OneDrive\Desktop\Vehicle-tracking-new\build\libraries\SoftwareSerial\SoftwareSerial.cpp.o: \
+c:\Users\thegr\OneDrive\Desktop\del1\Arduino-Vehicle-tracking\build\libraries\SoftwareSerial\SoftwareSerial.cpp.o: \
  C:\Users\thegr\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.3\libraries\SoftwareSerial\src\SoftwareSerial.cpp \
  C:\Users\thegr\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.3\cores\arduino/Arduino.h \
  C:\Users\thegr\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.3\cores\arduino/binary.h \
