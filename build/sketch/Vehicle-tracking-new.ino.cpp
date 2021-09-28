@@ -1,6 +1,7 @@
-# 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
-# 2 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino" 2
-# 3 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino" 2
+#include <Arduino.h>
+#line 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+#include <SoftwareSerial.h>
+#include <TinyGPS++.h>
 TinyGPSPlus gps;
 SoftwareSerial sim(3, 2);
 SoftwareSerial ss(4, 5);
@@ -11,6 +12,19 @@ float longitude;
 float latitude;
 String rSMS;
 int index = 0;
+#line 13 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void setup();
+#line 24 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void loop();
+#line 41 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void RecieveMessage();
+#line 51 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void gpsLocation();
+#line 70 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void SendMessage();
+#line 88 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+String _readSerial();
+#line 13 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
 void setup()
 {
   delay(5000); //delay for 7 seconds to make sure the modules get the signal
@@ -99,3 +113,4 @@ String _readSerial()
     return sim.readString();
   }
 }
+
