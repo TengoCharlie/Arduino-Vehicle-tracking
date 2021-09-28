@@ -1,4 +1,4 @@
-c:\Users\thegr\OneDrive\Desktop\Vehicle-tracking-new\build\core\USBCore.cpp.o: \
+c:\Users\thegr\OneDrive\Desktop\del1\Arduino-Vehicle-tracking\build\core\USBCore.cpp.o: \
  C:\Users\thegr\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.3\cores\arduino\USBCore.cpp \
  C:\Users\thegr\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.3\cores\arduino\USBAPI.h \
  C:\Users\thegr\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.3\cores\arduino\Arduino.h \

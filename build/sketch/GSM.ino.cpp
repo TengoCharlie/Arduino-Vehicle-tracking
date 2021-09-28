@@ -1,4 +1,24 @@
-# 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
+#include <Arduino.h>
+#line 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
+#line 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
+void init_sms();
+#line 9 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
+void send_sms();
+#line 14 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
+void gsm_init();
+#line 13 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void setup();
+#line 32 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void loop();
+#line 52 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void serialEvent();
+#line 68 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void send_data(String message);
+#line 74 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void lcd_status();
+#line 82 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+void tracking();
+#line 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\GSM.ino"
 void init_sms()
 {
     Serial.println("AT+CMGF=1");
@@ -60,9 +80,10 @@ void gsm_init()
 
     delay(1000);
 }
-# 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
-# 2 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino" 2
-# 3 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino" 2
+
+#line 1 "c:\\Users\\thegr\\OneDrive\\Desktop\\del1\\Arduino-Vehicle-tracking\\Vehicle-tracking-new.ino"
+#include <TinyGPS++.h>
+#include <SoftwareSerial.h>
 
 static const int RXPin = 4, TXPin = 3;
 static const uint32_t GPSBaud = 9600;
@@ -110,7 +131,7 @@ void loop()
         break;
     }
   }
-  digitalWrite(13, 0x0);
+  digitalWrite(13, LOW);
 }
 void serialEvent()
 {
@@ -163,3 +184,4 @@ void tracking()
   send_sms();
   delay(2000);
 }
+

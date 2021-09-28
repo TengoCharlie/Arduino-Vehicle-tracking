@@ -1,5 +1,5 @@
-c:\Users\thegr\OneDrive\Desktop\Vehicle-tracking-new\build\sketch\Vehicle-tracking-new.ino.cpp.o: \
- c:\Users\thegr\OneDrive\Desktop\Vehicle-tracking-new\build\sketch\Vehicle-tracking-new.ino.cpp \
+c:\Users\thegr\OneDrive\Desktop\del1\Arduino-Vehicle-tracking\build\sketch\GSM.ino.cpp.o: \
+ c:\Users\thegr\OneDrive\Desktop\del1\Arduino-Vehicle-tracking\build\sketch\GSM.ino.cpp \
  C:\Users\thegr\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.3\cores\arduino/Arduino.h \
  C:\Users\thegr\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.3\cores\arduino/binary.h \
  C:\Users\thegr\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.3\cores\arduino/WCharacter.h \
